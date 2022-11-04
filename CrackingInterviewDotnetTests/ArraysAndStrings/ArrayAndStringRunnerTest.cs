@@ -22,4 +22,25 @@ public class ArrayAndStringRunnerTest
         var result = ArrayAndStringRunner.IsUnique(testString);
         Assert.Equal(false, result);
     }
+
+
+    [Theory]
+    [InlineData("batt", "ttab")]
+    [InlineData("data", "tada")]
+    public void CheckPermutation_ForPermutations_Passes(string a, string b)
+    {
+        var result = ArrayAndStringRunner.CheckPermutation(a, b);
+        Assert.True(result);
+
+    }
+
+    [Theory]
+    [InlineData("house", "home")]
+    [InlineData("council", "counsel")]
+    public void CheckPermutation_ForNonPermutations_Fails(string a, string b)
+    {
+        var result = ArrayAndStringRunner.CheckPermutation(a, b);
+        Assert.False(result);
+
+    }
 }
