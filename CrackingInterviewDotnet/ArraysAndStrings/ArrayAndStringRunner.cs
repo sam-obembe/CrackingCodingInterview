@@ -73,7 +73,8 @@ namespace CrackingInterviewDotnet.ArraysAndStrings
         /// <returns></returns>
         public static string URLify(string text)
         {
-            return string.Empty;
+            var url = text.Trim().Replace(" ", "%20");
+            return url;
         }
 
 

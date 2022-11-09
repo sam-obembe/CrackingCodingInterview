@@ -43,4 +43,16 @@ public class ArrayAndStringRunnerTest
         Assert.False(result);
 
     }
+
+
+    [Theory]
+    [InlineData("Mr John Smith ")]
+    public void URLify_ForValidText_Passes(string text)
+    {
+        var urlParsed = ArrayAndStringRunner.URLify(text);
+        var contains = urlParsed.Contains("%20");
+
+        Assert.True(contains);
+
+    }
 }

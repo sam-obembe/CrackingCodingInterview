@@ -33,4 +33,23 @@ public class LinkedListRunner
         return listWithDups;
     }
 
+    /// <summary>
+    /// 2.2 Implement an algorithm to find the kth to last element of a singly linked list
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="k"></param>
+    /// <returns></returns>
+    public static string KToLastElement(LinkedList<string> list, int k)
+    {
+        //tim -> sarah -> anthony -> cleopatra
+        //second to last = anthony
+
+        //convert to array, return elem and array.count-2
+
+        var elementArray = list.ToArray();
+
+        return elementArray[elementArray.Count() - k];
+
+    }
+
 }
