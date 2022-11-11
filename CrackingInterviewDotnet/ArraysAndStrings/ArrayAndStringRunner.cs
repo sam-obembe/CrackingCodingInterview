@@ -77,7 +77,45 @@ namespace CrackingInterviewDotnet.ArraysAndStrings
             return url;
         }
 
+        /// <summary>
+        /// 1.4 Given a string, write a function to check if it is a permutation of a palindrome. 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="palindrome"></param>
+        /// <returns></returns>
+        public static bool PalindromePermutation(string text)
+        {
+            var trimmedText = text.ToLower().Replace(" ", "");
+            var length = trimmedText.Length;
+            var isEven = length % 2 == 0;
 
+            var textDictionary = Dictionarify(trimmedText);
+
+            var countOfOddCharacters = textDictionary.Where(x => x.Value % 2 > 0).Count();
+
+            if (isEven)
+            {
+                if (countOfOddCharacters > 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (countOfOddCharacters > 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
         public static Dictionary<char, int> Dictionarify(string text)
         {
             var charArray = text.ToCharArray();

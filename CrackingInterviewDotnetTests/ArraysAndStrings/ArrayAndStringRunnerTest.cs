@@ -55,4 +55,16 @@ public class ArrayAndStringRunnerTest
         Assert.True(contains);
 
     }
+
+
+    [Theory]
+    [InlineData("Tact Coa")]
+    [InlineData("opp")]
+    [InlineData("yaakk")]
+    [InlineData("raacere")]
+    public void PalindromePermutation_Passes(string text)
+    {
+        var isPermutation = ArrayAndStringRunner.PalindromePermutation(text);
+        Assert.True(isPermutation);
+    }
 }
