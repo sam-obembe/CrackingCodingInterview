@@ -67,4 +67,25 @@ public class ArrayAndStringRunnerTest
         var isPermutation = ArrayAndStringRunner.PalindromePermutation(text);
         Assert.True(isPermutation);
     }
+
+
+
+    [Theory]
+    [InlineData("pale", "ple")]
+    [InlineData("pales", "pale")]
+    [InlineData("pale", "bale")]
+    public void OneAway_Passes_True(string textA, string textB)
+    {
+        var isOneAway = ArrayAndStringRunner.OneAway(textA, textB);
+        Assert.True(isOneAway);
+    }
+
+
+    [Theory]
+    [InlineData("pale", "bake")]
+    public void OneAway_Passes_False(string textA, string textB)
+    {
+        var isOneAway = ArrayAndStringRunner.OneAway(textA, textB);
+        Assert.False(isOneAway);
+    }
 }
