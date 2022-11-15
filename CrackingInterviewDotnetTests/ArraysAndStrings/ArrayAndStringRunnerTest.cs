@@ -88,4 +88,13 @@ public class ArrayAndStringRunnerTest
         var isOneAway = ArrayAndStringRunner.OneAway(textA, textB);
         Assert.False(isOneAway);
     }
+
+
+    [Theory]
+    [InlineData("aabccccaaa", "a2b1c4a3")]
+    public void StringCompression_Passes(string text, string compressed)
+    {
+        var result = ArrayAndStringRunner.StringCompression(text);
+        Assert.Equal(compressed, result);
+    }
 }

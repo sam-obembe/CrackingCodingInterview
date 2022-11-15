@@ -150,9 +150,38 @@ namespace CrackingInterviewDotnet.ArraysAndStrings
             }
 
             return true;
-
         }
 
+        /// <summary>
+        /// 1.6 Implement a method to perform basic string compression using the counts of repeated characters e.g aabcccccaaa => a2b1c5a3. If the compressed string is not smaller than the original string , return the original
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string StringCompression(string text)
+        {
+            var compressed = "";
+            var textArray = text.ToCharArray();
+            var currentCharacter = textArray[0].ToString();
+            var countOfCurrentCharacter = 1;
+
+            for (int i = 1; i < textArray.Count(); i++)
+            {
+                if (textArray[i].ToString() != currentCharacter)
+                {
+                    compressed += $"{currentCharacter}{countOfCurrentCharacter}";
+
+                    currentCharacter = textArray[i].ToString();
+                    countOfCurrentCharacter = 1;
+                }
+                else
+                {
+                    countOfCurrentCharacter += 1;
+                }
+            }
+            compressed += $"{currentCharacter}{countOfCurrentCharacter}";
+
+            return compressed.Count() < text.Count() ? compressed : text;
+        }
         public static Dictionary<char, int> Dictionarify(string text)
         {
             var charArray = text.ToCharArray();
