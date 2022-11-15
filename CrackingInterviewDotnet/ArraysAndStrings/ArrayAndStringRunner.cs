@@ -78,7 +78,8 @@ namespace CrackingInterviewDotnet.ArraysAndStrings
         }
 
         /// <summary>
-        /// 1.4 Given a string, write a function to check if it is a permutation of a palindrome. 
+        /// 1.4 Given a string, write a function to check if it is a permutation of a palindrome.
+        /// *Hint : For an even length string, it shouldn't have any character with an odd occurrence, whereas for an odd length string, it should have only 1*
         /// </summary>
         /// <param name="text"></param>
         /// <param name="palindrome"></param>
@@ -116,6 +117,42 @@ namespace CrackingInterviewDotnet.ArraysAndStrings
                 }
             }
         }
+
+
+
+        /// <summary>
+        /// 1.5 Given two strings, write a function to check if they are one edit or zero edits away from each other. An edit is an insert, a removal or replacement of a character. 
+        /// </summary>
+        /// <param name="text_A"></param>
+        /// <param name="text_B"></param>
+        /// <returns></returns>
+        public static bool OneAway(string text_A, string text_B)
+        {
+            //their lengths must only differ by one
+            var lengthA = text_A.Length;
+            var lengthB = text_B.Length;
+
+            if (Math.Abs(lengthA - lengthB) > 1)
+            {
+                return false;
+            }
+
+            //there should only be one character different
+            var listA = text_A.ToList();
+            var listB = text_B.ToList();
+
+            var aNotInB = listA.Where(x => !listB.Contains(x)).ToList();
+            var bNotInA = listB.Where(x => !listA.Contains(x)).ToList();
+
+            if (aNotInB.Count > 1 || bNotInA.Count > 1)
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
         public static Dictionary<char, int> Dictionarify(string text)
         {
             var charArray = text.ToCharArray();
